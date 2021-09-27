@@ -1,0 +1,18 @@
+version: '3'
+services:
+  nodeapp:
+    build:
+      context: ./nodeapp
+    container_name: nodeapp
+    hostname: nodeapp
+    #env_file: config.env
+  nginx:
+    #image: dewythefirst/nginx_test
+    build:
+      context: ./nginx
+    hostname: nginx-my
+    container_name: nginx-my
+    ports:
+      - "80:80"
+    depends_on:
+      - nodeapp
